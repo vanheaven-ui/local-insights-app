@@ -1,0 +1,20 @@
+/* src/app/globals.css */
+
+/*
+  These are the core Tailwind CSS directives.
+  They inject Tailwind's base styles, component classes, and utility classes.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  You can add any custom global CSS rules below these directives.
+  However, for now, it's best to keep this file as clean as possible
+  to ensure Tailwind is the primary source of styling and to avoid conflicts.
+*/
+
+/* Example of adding a custom global style if needed (do NOT add unless necessary for debugging) */
+body {
+  font-family: sans-serif;
+}
