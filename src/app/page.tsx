@@ -30,6 +30,65 @@ export default function Home() {
     };
   }, []);
 
+  // const handleAnalyze = async () => {
+  //   if (!feedbackText.trim()) {
+  //     setError("Please enter some feedback to analyze.");
+  //     setAnalysisResult(null);
+  //     return;
+  //   }
+
+  //   setIsLoading(true);
+  //   setError(null);
+  //   setAnalysisResult(null);
+
+  //   try {
+  //     // Temporary placeholder for analysis for now since backend is not yet implemented
+  //     // Remove this block once the backend is ready and deployed
+  //     if (process.env.NODE_ENV === "development") {
+  //       // Simulate API call delay
+  //       await new Promise((resolve) => setTimeout(resolve, 1500));
+  //       setAnalysisResult({
+  //         summary:
+  //           "Customers generally appreciate the coffee quality and friendly staff, but frequently complain about long wait times and uncomfortable seating.",
+  //         sentiment: "Mixed",
+  //         keyThemes: {
+  //           positive: ["Coffee quality", "Friendly staff", "Atmosphere"],
+  //           negative: [
+  //             "Long wait times",
+  //             "Uncomfortable seating",
+  //             "Lack of parking",
+  //           ],
+  //         },
+  //         actionableInsights:
+  //           "Focus on improving operational efficiency during peak hours to reduce wait times. Consider upgrading seating options or adding more comfortable alternatives. Leverage the positive feedback on coffee and staff in marketing efforts.",
+  //         keyTakeaways: [
+  //           "Operational bottlenecks during peak hours are impacting customer satisfaction.",
+  //           "Comfort and waiting experience are significant pain points.",
+  //           "Strong points are product quality (coffee) and human interaction (staff).",
+  //         ],
+  //         recommendations: [
+  //           "Implement a digital queuing system or pre-ordering app to manage wait times.",
+  //           "Conduct a seating audit and gradually replace/add more ergonomic chairs.",
+  //           "Introduce a 'customer appreciation' program for staff members who receive positive mentions.",
+  //         ],
+  //       });
+  //       setIsLoading(false);
+  //       return;
+  //     }
+  //     // End temporary placeholder
+
+  //     const data = await analyzeFeedback(feedbackText);
+  //     setAnalysisResult(data);
+  //   } catch (err: unknown) {
+  //     const errorMessage =
+  //       err instanceof Error ? err.message : "An unexpected error occurred.";
+  //     console.error("Frontend error during analysis:", err);
+  //     setError(errorMessage || "Failed to analyze feedback. Please try again.");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const handleAnalyze = async () => {
     if (!feedbackText.trim()) {
       setError("Please enter some feedback to analyze.");
@@ -42,41 +101,7 @@ export default function Home() {
     setAnalysisResult(null);
 
     try {
-      // Temporary placeholder for analysis for now since backend is not yet implemented
-      // Remove this block once the backend is ready and deployed
-      if (process.env.NODE_ENV === "development") {
-        // Simulate API call delay
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        setAnalysisResult({
-          summary:
-            "Customers generally appreciate the coffee quality and friendly staff, but frequently complain about long wait times and uncomfortable seating.",
-          sentiment: "Mixed",
-          keyThemes: {
-            positive: ["Coffee quality", "Friendly staff", "Atmosphere"],
-            negative: [
-              "Long wait times",
-              "Uncomfortable seating",
-              "Lack of parking",
-            ],
-          },
-          actionableInsights:
-            "Focus on improving operational efficiency during peak hours to reduce wait times. Consider upgrading seating options or adding more comfortable alternatives. Leverage the positive feedback on coffee and staff in marketing efforts.",
-          keyTakeaways: [
-            "Operational bottlenecks during peak hours are impacting customer satisfaction.",
-            "Comfort and waiting experience are significant pain points.",
-            "Strong points are product quality (coffee) and human interaction (staff).",
-          ],
-          recommendations: [
-            "Implement a digital queuing system or pre-ordering app to manage wait times.",
-            "Conduct a seating audit and gradually replace/add more ergonomic chairs.",
-            "Introduce a 'customer appreciation' program for staff members who receive positive mentions.",
-          ],
-        });
-        setIsLoading(false);
-        return;
-      }
-      // End temporary placeholder
-
+      // This line will now make the actual API call to your backend
       const data = await analyzeFeedback(feedbackText);
       setAnalysisResult(data);
     } catch (err: unknown) {
@@ -88,7 +113,6 @@ export default function Home() {
       setIsLoading(false);
     }
   };
-
   return (
     <div className="relative min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 overflow-hidden">
       <div
